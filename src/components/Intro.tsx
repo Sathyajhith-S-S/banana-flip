@@ -128,7 +128,7 @@ const Intro = () => {
   const { currentPage, increasePage,decreasePage } = usePageState();
   const nextBtns = [startBtn, nextBtn, yesBtn, playBtn];
   const intros = [
-    "Welcome Kiddo !",
+    "Welcome Kiddoooo !",
     "Hi , I am Mizo ! and I love bananas ",
     "Can you help me get some ? ",
   ];
