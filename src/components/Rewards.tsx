@@ -8,6 +8,7 @@ import {
   BarImage,
 } from "./Intro";
 import { useNavigate } from "react-router-dom";
+
 const Rewards = () => {
   const { correctMatches } = usePageState();
   const navigate=useNavigate();
@@ -23,7 +24,7 @@ const Rewards = () => {
         <PrevBtnImage src={require("../assets/backbtn.png")} alt="prevbtn" />
       </PrevBtn>
       <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", backgroundColor: "rgba(0, 0, 0, 0.5)", zIndex: 2, display: "flex", justifyContent: "center", alignItems: "center", color: "white", fontSize: "2rem" }}>
-        <div>Match Found!</div>
+        
         <div>{correctMatches}</div>
       </div>
     </IntroDiv>
