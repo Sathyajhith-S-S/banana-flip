@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
-import { useState } from "react";
+// import { useState } from "react";
 import startBtn from "../assets/startbtn.png";
 import nextBtn from "../assets/nextbtn.png";
 import yesBtn from "../assets/yesbtn.png";
 import playBtn from "../assets/playbtn.png";
 import Instruction from "./Instruction";
 import { useNavigate } from "react-router-dom";
+import { usePageState } from './PageContext';
 export const IntroDiv = styled.div`
   height: 100vh;
   width: 100vw;
@@ -124,7 +125,7 @@ const Dust4 = styled.img`
   height: 9.65vh;
 `;
 const Intro = () => {
-  const [page, setPage] = useState(0);
+  const { currentPage, increasePage,decreasePage } = usePageState();
   const nextBtns = [startBtn, nextBtn, yesBtn, playBtn];
   const intros = [
     "Welcome Kiddo !",
@@ -133,17 +134,16 @@ const Intro = () => {
   ];
   const navigate=useNavigate();
   const handleNext = () => {
-    if (page === 3) {
+    if (currentPage === 3) {
       navigate("/activity"); // Navigate to "/activity" route
+    } else {
+      increasePage(); // Increase currentPage using context API
     }
-    setPage(page + 1);
-    // Check if page value is 4, then navigate to "/activity"
-    
   };
   return (
     <IntroDiv>
       <BgImage src={require("../assets/introbg.png")} alt="introbg" />
-      {page === 3 ? (
+      {currentPage === 3 ? (
         <Instruction />
       ) : (
         <div className="into-div">
@@ -154,7 +154,7 @@ const Intro = () => {
           />
           <Askcloud src={require("../assets/askcloud.png")} alt="askcloud" />
           <AskDiv>
-            <H1>{intros[page]}</H1>
+            <H1>{intros[currentPage]}</H1>
           </AskDiv>
           <Dust1 src={require("../assets/dust1.png")} alt="dust1" />
           <Dust2 src={require("../assets/dust2.png")} alt="dust2" />
@@ -173,17 +173,17 @@ const Intro = () => {
         </div>
       )}
       <NextBtn onClick={handleNext}>
-        <NextBtnImage src={nextBtns[page]} alt="next button" />
+        <NextBtnImage src={nextBtns[currentPage]} alt="next button" />
       </NextBtn>
-      {page !== 0 && (
-        <PrevBtn onClick={() => setPage(page - 1)}>
+      {currentPage !== 0 && (
+        <PrevBtn onClick={() => decreasePage()}>
           <PrevBtnImage
             src={require("../assets/backbtn.png")}
             alt="back button"
           />
         </PrevBtn>
       )}
-      {page >= 2 && (
+      {currentPage >= 2 && (
         <div className="bar">
           <BarImage src={require("../assets/bar.png")} alt="bar" />
           <BarBanana src={require("../assets/barbanana.png")} alt="barbanana" />
@@ -193,5 +193,4 @@ const Intro = () => {
     </IntroDiv>
   );
 };
-
 export default Intro;
