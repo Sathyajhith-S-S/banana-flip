@@ -4,7 +4,8 @@ import startBtn from "../assets/startbtn.png";
 import nextBtn from "../assets/nextbtn.png";
 import yesBtn from "../assets/yesbtn.png";
 import playBtn from "../assets/playbtn.png";
-
+import Instruction from "./Instruction";
+import { useNavigate } from "react-router-dom";
 export const IntroDiv = styled.div`
   height: 100vh;
   width: 100vw;
@@ -92,7 +93,7 @@ export const BarBanana = styled.img`
   left: 67.7vw;
   width: 9.72vw;
   height: 18.09vh;
-  top:0px;
+  top: 0px;
 `;
 const Dust1 = styled.img`
   position: absolute;
@@ -124,39 +125,54 @@ const Dust4 = styled.img`
 `;
 const Intro = () => {
   const [page, setPage] = useState(0);
-  const nextBtns = [startBtn, nextBtn, yesBtn,playBtn];
+  const nextBtns = [startBtn, nextBtn, yesBtn, playBtn];
   const intros = [
     "Welcome Kiddo !",
     "Hi , I am Mizo ! and I love bananas ",
     "Can you help me get some ? ",
   ];
+  const navigate=useNavigate();
+  const handleNext = () => {
+    if (page === 3) {
+      navigate("/activity"); // Navigate to "/activity" route
+    }
+    setPage(page + 1);
+    // Check if page value is 4, then navigate to "/activity"
+    
+  };
   return (
     <IntroDiv>
       <BgImage src={require("../assets/introbg.png")} alt="introbg" />
-      {page!==3 &&
-      <div className="into-div">
-      <Shadow src={require("../assets/shadow.png")} alt="shadow" />
-      <Monkey src={require("../assets/intromonkey.png")} alt="intromonkey" />
-      <Askcloud src={require("../assets/askcloud.png")} alt="askcloud" />
-      <AskDiv>
-        <H1>{intros[page]}</H1>
-      </AskDiv>
-      <Dust1 src={require("../assets/dust1.png")} alt="dust1" />
-      <Dust2 src={require("../assets/dust2.png")} alt="dust2" />
-      <Dust3 src={require("../assets/dust3.png")} alt="dust3" />
-      <Dust4 src={require("../assets/dust4.png")} alt="dust4" />
-      <Dust1
-        src={require("../assets/dust1.png")}
-        alt="dust1"
-        style={{ left: "25.69vw" }}
-      />
-      <Dust2
-        src={require("../assets/dust2.png")}
-        alt="dust2"
-        style={{ left: "18.75vw" }}
-      />
-      </div>}
-      <NextBtn onClick={() => setPage(page + 1)}>
+      {page === 3 ? (
+        <Instruction />
+      ) : (
+        <div className="into-div">
+          <Shadow src={require("../assets/shadow.png")} alt="shadow" />
+          <Monkey
+            src={require("../assets/intromonkey.png")}
+            alt="intromonkey"
+          />
+          <Askcloud src={require("../assets/askcloud.png")} alt="askcloud" />
+          <AskDiv>
+            <H1>{intros[page]}</H1>
+          </AskDiv>
+          <Dust1 src={require("../assets/dust1.png")} alt="dust1" />
+          <Dust2 src={require("../assets/dust2.png")} alt="dust2" />
+          <Dust3 src={require("../assets/dust3.png")} alt="dust3" />
+          <Dust4 src={require("../assets/dust4.png")} alt="dust4" />
+          <Dust1
+            src={require("../assets/dust1.png")}
+            alt="dust1"
+            style={{ left: "25.69vw" }}
+          />
+          <Dust2
+            src={require("../assets/dust2.png")}
+            alt="dust2"
+            style={{ left: "18.75vw" }}
+          />
+        </div>
+      )}
+      <NextBtn onClick={handleNext}>
         <NextBtnImage src={nextBtns[page]} alt="next button" />
       </NextBtn>
       {page !== 0 && (
@@ -173,7 +189,7 @@ const Intro = () => {
           <BarBanana src={require("../assets/barbanana.png")} alt="barbanana" />
         </div>
       )}
-      
+
     </IntroDiv>
   );
 };
