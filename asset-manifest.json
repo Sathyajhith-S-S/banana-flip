@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/banana-flip/static/css/main.e6c13ad2.css",
-    "main.js": "/banana-flip/static/js/main.c1d1a04a.js",
+    "main.js": "/banana-flip/static/js/main.bc6ebf50.js",
     "static/media/introbg.png": "/banana-flip/static/media/introbg.4bc40a602fbe69d27c81.png",
     "static/media/shadow.png": "/banana-flip/static/media/shadow.f69e946452f623465697.png",
     "static/media/intromonkey.png": "/banana-flip/static/media/intromonkey.f44aed18509b5939fb28.png",
@@ -16,10 +16,10 @@
     "static/media/playbtn.png": "/banana-flip/static/media/playbtn.21600e5a3e05a0a0a4b4.png",
     "index.html": "/banana-flip/index.html",
     "main.e6c13ad2.css.map": "/banana-flip/static/css/main.e6c13ad2.css.map",
-    "main.c1d1a04a.js.map": "/banana-flip/static/js/main.c1d1a04a.js.map"
+    "main.bc6ebf50.js.map": "/banana-flip/static/js/main.bc6ebf50.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.c1d1a04a.js"
+    "static/js/main.bc6ebf50.js"
   ]
 }
