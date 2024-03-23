@@ -12,6 +12,7 @@ const App: React.FC = () => {
       <PageStateProvider> {/* Wrap your routes with the context provider */}
         <Routes>
           <Route path='/' element={<Intro />} />
+          <Route path='/banana-flip' element={<Intro />} />
           <Route path='/activity' element={<Activity />} />
           <Route path='/rewards' element={<Rewards />} />
         </Routes>
