@@ -113,7 +113,7 @@ const Activity = () => {
 
   useEffect(() => {
     if (showMatchOverlay) {
-      setTimeout(() => setShowMatchOverlay(false), 1000); // Show the match overlay for 1 second
+      setTimeout(() => setShowMatchOverlay(false), 1500); // Show the match overlay for 1 second
     }
   }, [showMatchOverlay]);
 
@@ -312,12 +312,14 @@ const Activity = () => {
             color: "white",
             fontSize: "2rem",
           }}
-        >
-          <div>Match Found!</div>
-          <div>Matched Cards: {matchedCards.join(", ")}</div>
+        ><div style={{font:'nunito',fontWeight:'600',fontSize:'76px',color:'#FCE492'}}>
+          <div >Its a match !</div>
+          <div>Matched Images: {matchedCards.join(", ")}</div>
+          </div>
+
         </div>
       )}
-      <div style={{ position: "absolute", top: 0, left: 0 }}>
+      <div style={{ position: "absolute", top: 0, right: '20px',font:'nunito',fontWeight:'600',fontSize:'30px',color:'#00224D'}}>
         <p>No of clicks left:{noOfClicks}</p>
       </div>
     </IntroDiv>
