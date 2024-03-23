@@ -9,47 +9,79 @@ const CardsDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
   position: absolute;
-  left: 23vw;
+  left:9vw;
   top: 26vh;
+  width:600px;
 `;
 
 const Activity = () => {
     const navigate = useNavigate();
-    const [cards, setCards] = useState<{ id: number; symbol: string; isFlipped: boolean; isMatched: boolean }[]>([]);
+    const [cards1, setCards1] = useState<{ id: number; symbol: string; isFlipped: boolean; isMatched: boolean }[]>([]);
+    const [cards2, setCards2] = useState<{ id: number; symbol: string; isFlipped: boolean; isMatched: boolean }[]>([]);
     const [selectedCardIndices, setSelectedCardIndices] = useState<number[]>([]);
     const [showMatchOverlay, setShowMatchOverlay] = useState(false);
     const [matchedCards, setMatchedCards] = useState<string[]>([]); // Store matched symbols
-    const {correctMatches,increaseMatches}=usePageState();// Track correct matches for progress
+    const {correctMatches,increaseMatches,setMatches}=usePageState();// Track correct matches for progress
     const [noOfClicks,setNoOfClicks] = useState(20);
+    const [cardsSet, setCardsSet] = useState('');
     useEffect(() => {
       // Generate initial cards with random symbols
       const symbols = ['🍎', '🍌', '🍒', '🍇', '🍊', '🍉'];
+    //   const alphas=['A','B','C','G','O','W'];
+    const alphas = ['🍎', '🍌', '🍒', '🍇', '🍊', '🍉'];
       const initialCards = symbols
-        .concat(symbols) // Create pairs of symbols
+         // Create pairs of symbols
         .map((symbol, index) => ({ id: index, symbol, isFlipped: true, isMatched: false }));
-      setCards(shuffleArray(initialCards));
-
+      setCards1(shuffleArray(initialCards));
+      const alphaCards=alphas.map((symbol,index)=>({id:index,symbol,isFlipped:true,isMatched:false}));
+      setCards2(shuffleArray(alphaCards));
       setTimeout(() => {
-        setCards((prevCards) => prevCards.map((card) => ({ ...card, isFlipped: false })));
-        
+        setCards1((prevCards) => prevCards.map((card) => ({ ...card, isFlipped: false })));
+        setCards2((prevCards) => prevCards.map((card) => ({ ...card, isFlipped: false })));
       }, 2000);
     }, []);
   
-    const handleClick = (index: number) => {
-        if(noOfClicks===0){
+    const handleClick = (index: number, cardSet: 'cards1' | 'cards2') => {
+        
+        if (noOfClicks === 0) {
             navigate('/rewards');
+            return; // Added return to prevent further execution
         }
-        setNoOfClicks(noOfClicks-1);
-      // Only allow clicking on unflipped cards and limit to two selected cards
-      if (!cards[index].isFlipped && selectedCardIndices.length < 2) {
-        setSelectedCardIndices((prevIndices) => [...prevIndices, index]);
-        setCards((prevCards) => {
-          const newCards = [...prevCards];
-          newCards[index].isFlipped = true;
-          return newCards;
-        });
+    
+        
+    
+        const selectedCards = cardSet === 'cards1' ? cards1 : cards2;
+      if((cardsSet==='' && cardSet==='cards1')||(cardsSet==='cards1' && cardSet==='cards2')){
+        setNoOfClicks(noOfClicks - 1);
+        if (!selectedCards[index].isFlipped && selectedCardIndices.length < 2) {
+            setSelectedCardIndices((prevIndices) => [...prevIndices, index]);
+            if (cardSet === 'cards1') {
+                setCards1((prevCards) => {
+                    const newCards = [...prevCards];
+                    newCards[index].isFlipped = true;
+                    return newCards;
+                });
+            } else {
+                setCards2((prevCards) => {
+                    const newCards = [...prevCards];
+                    newCards[index].isFlipped = true;
+                    return newCards;
+                });
+            }
+        }
       }
+        // Only allow clicking on unflipped cards and limit to two selected cards
+        
+        if(cardsSet==='' && cardSet==='cards1'){
+            setCardsSet('cards1');
+        }
+        if(cardsSet==='cards1' && cardSet==='cards2'){
+            setCardsSet('');
+        }
     };
+    
+    
+    
   
     useEffect(() => {
       if (selectedCardIndices.length === 2) {
@@ -64,37 +96,50 @@ const Activity = () => {
     }, [showMatchOverlay]);
   
     const checkMatch = () => {
-      const [index1, index2] = selectedCardIndices;
-      if (cards[index1]?.symbol === cards[index2]?.symbol) {
-        // Matching cards
-        setCards((prevCards) => {
-          const newCards = [...prevCards];
-          newCards[index1].isMatched = true;
-          newCards[index2].isMatched = true;
-          console.log("Match!");
-          return newCards;
-        });
-        setShowMatchOverlay(true);
-        setMatchedCards((prevMatched) => [...prevMatched, cards[index1].symbol]);
-        increaseMatches(); // Increment correct matches
-        if(correctMatches===5){    
-            navigate('/rewards');
+        if (selectedCardIndices.length === 2) {
+            const [index1, index2] = selectedCardIndices;
+    
+            const card1 = cards1[index1];
+            const card2 = cards2[index2];
+    
+            if (card1.symbol === card2.symbol) {
+                // Matching cards
+                const updatedCards1 = [...cards1];
+                const updatedCards2 = [...cards2];
+    
+                updatedCards1[index1] = { ...updatedCards1[index1], isMatched: true };
+                updatedCards2[index2] = { ...updatedCards2[index2], isMatched: true };
+    
+                setCards1(updatedCards1);
+                setCards2(updatedCards2);
+    
+                setShowMatchOverlay(true);
+                setMatchedCards((prevMatched) => [...prevMatched, card1.symbol]);
+    
+                increaseMatches(); // Increment correct matches
+    
+                if (correctMatches === 5) {
+                    navigate('/rewards');
+                }
+            } else {
+                // Not matching cards
+                setTimeout(() => {
+                    setCards1((prevCards) => {
+                        const newCards = [...prevCards];
+                        newCards[index1].isFlipped = false;
+                        return newCards;
+                    });
+                    setCards2((prevCards) => {
+                        const newCards = [...prevCards];
+                        newCards[index2].isFlipped = false;
+                        return newCards;
+                    });
+                }, 500); // Delay to show both cards before flipping them back
+            }
+    
+            setSelectedCardIndices([]);
         }
-        
-      } else {
-        // Not matching cards
-        setTimeout(() => {
-          setCards((prevCards) => {
-            const newCards = [...prevCards];
-            newCards[index1].isFlipped = false;
-            newCards[index2].isFlipped = false;
-            return newCards;
-          });
-        }, 500); // Delay to show both cards before flipping them back
-      }
-      setSelectedCardIndices([]);
     };
-  
     const shuffleArray = (array: any[]) => {
       return array.sort(() => Math.random() - 0.5);
     };
@@ -102,7 +147,10 @@ const Activity = () => {
   return (
     <IntroDiv>
     <BgImage src={require("../assets/introbg.png")} alt="introbg" />
-    <PrevBtn onClick={() => navigate('/')}>
+    <PrevBtn onClick={() => {
+                setMatches();
+                navigate("/");
+              }}>
       <PrevBtnImage src={require("../assets/backbtn.png")} alt="prevbtn" />
     </PrevBtn>
     <BarImage src={require("../assets/bar.png")} alt="bar" />
@@ -111,18 +159,32 @@ const Activity = () => {
       <div style={{ position: "absolute", left: 0, top: 0, width: `${correctMatches * 16.66}%`, height: "100%", backgroundColor: "#FFC700", borderRadius: "10px" }} />
     </div>
     
-    <BarBanana src={require("../assets/barbanana.png")} alt="barbanana" />
+    <BarBanana src={require("../assets/banana.png")} alt="barbanana" />
     
     
     <CardsDiv>
-      {cards.map((card, index) => (
+      {cards1.map((card, index) => (
         <Card
           key={card.id}
           symbol={card.symbol}
           isFlipped={card.isFlipped}
-          isClickable={!selectedCardIndices.includes(index) && !card.isFlipped}
+          isClickable={!card.isFlipped}
           isMatched={card.isMatched}
-          onClick={() => handleClick(index)}
+          onClick={() => handleClick(index,'cards1')}
+          color={'pink'}
+        />
+      ))}
+    </CardsDiv>
+    <CardsDiv style={{left:'53vw'}}>
+      {cards2.map((card, index) => (
+        <Card
+          key={card.id}
+          symbol={card.symbol}
+          isFlipped={card.isFlipped}
+          isClickable={!card.isFlipped}
+          isMatched={card.isMatched}
+          onClick={() => handleClick(index,'cards2')}
+          color={'blue'}
         />
       ))}
     </CardsDiv>

@@ -7,6 +7,7 @@ interface PageStateContextProps {
   increasePage: () => void;
   decreasePage: () => void;
   increaseMatches: () => void;
+  setMatches: () => void;
 }
 
 // Create a context to manage the current page number
@@ -31,10 +32,12 @@ const PageStateProvider: FC<PageStateManagerProps> = ({ children }) => {
   const decreasePage = () => {
     setCurrentPage((prevPage) => prevPage - 1);
   };
-
+  const setMatches=()=>{
+    setCorrectMatches(0);
+  }
   return (
     <PageStateContext.Provider
-      value={{ currentPage, increasePage, decreasePage, correctMatches, increaseMatches }}
+      value={{ currentPage, increasePage, decreasePage, correctMatches, increaseMatches,setMatches }}
     >
       {children}
     </PageStateContext.Provider>

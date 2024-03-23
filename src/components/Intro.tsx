@@ -91,10 +91,10 @@ export const BarImage = styled.img`
 `;
 export const BarBanana = styled.img`
   position: absolute;
-  left: 67.7vw;
-  width: 9.72vw;
-  height: 18.09vh;
-  top: 0px;
+  left: 66.7vw;
+  width: 11.72vw;
+  height: 22.09vh;
+  top: -25px;
 `;
 const Dust1 = styled.img`
   position: absolute;
@@ -128,7 +128,7 @@ const Intro = () => {
   const { currentPage, increasePage,decreasePage } = usePageState();
   const nextBtns = [startBtn, nextBtn, yesBtn, playBtn];
   const intros = [
-    "Welcome Kiddoooo !",
+    "Welcome Kiddo !",
     "Hi , I am Mizo ! and I love bananas ",
     "Can you help me get some ? ",
   ];
@@ -186,7 +186,7 @@ const Intro = () => {
       {currentPage >= 2 && (
         <div className="bar">
           <BarImage src={require("../assets/bar.png")} alt="bar" />
-          <BarBanana src={require("../assets/barbanana.png")} alt="barbanana" />
+          <BarBanana src={require("../assets/banana.png")} alt="barbanana" />
         </div>
       )}
 
