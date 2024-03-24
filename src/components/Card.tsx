@@ -7,17 +7,17 @@ const StyledCard = styled.div<{
   isClickable: boolean;
   isMatched: boolean;
 }>`
-  width: 150px; /* Set a fixed width for the card */
-  height: 190px; /* Set a fixed height for the card */
+  width: 10.41vw; /* Set a fixed width for the card */
+  height: 25.46vh; /* Set a fixed height for the card */
   background-color: ${({ isFlipped }) => (isFlipped ? "white" : "transparent")};
-  border-radius: 10px;
+  border-radius: 0.69vw;
   cursor: ${({ isClickable }) => (isClickable ? "pointer" : "default")};
   display: flex;
   justify-content: center;
   align-items: center;
   transition: transform 0.3s ease; /* Add a smooth transition for flipping */
-  margin-right: 50px; /* Add margin to the right */
-  margin-bottom: 50px; /* Add margin to the bottom */
+  margin-right: 3.47vw; /* Add margin to the right */
+  margin-bottom: 6.7vh; /* Add margin to the bottom */
   &:hover {
     transform: ${({ isClickable }) => (isClickable ? "scale(1.05)" : "none")};
   }
@@ -56,9 +56,9 @@ const Card: React.FC<CardProps> = ({
       style={isMatched?{visibility:"hidden"}:{}}
     >
       {isFlipped ? (
-        <div style={{ fontSize: "3rem" }}>{symbol}</div>
+        <div style={{ fontSize: "3.33vw" }}>{symbol}</div>
       ) : (
-        <img src={color === "pink" ? pinkcard : bluecard} alt="Blue Card" />
+        <img src={color === "pink" ? pinkcard : bluecard} alt="Blue Card" style={{width:'14.65vw',height:'34.45vh'}}/>
       )}
     </StyledCard>
   );

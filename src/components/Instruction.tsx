@@ -86,7 +86,7 @@ const Instruction = () => {
             src={require("../assets/bluenpinkcards.png")}
             alt="bluenpink"
           />
-          <div style={{marginTop:'-9vh'}}>
+          <div style={{marginTop:'-4.76vw'}}>
           <H2>If they're the same</H2>
           <H1>It's a match!</H1>
           <H2>Otherwise, retry :(</H2>

@@ -94,7 +94,7 @@ export const BarBanana = styled.img`
   left: 66.7vw;
   width: 11.72vw;
   height: 22.09vh;
-  top: -25px;
+  top: -3.35vh;
 `;
 const Dust1 = styled.img`
   position: absolute;

@@ -18,7 +18,7 @@ const CardsDiv = styled.div`
   position: absolute;
   left: 9vw;
   top: 26vh;
-  width: 600px;
+  width: 41.66vw;
 `;
 
 const Activity = () => {
@@ -177,7 +177,6 @@ const Activity = () => {
       >
         <PrevBtnImage src={require("../assets/backbtn.png")} alt="prevbtn" />
       </PrevBtn>
-      <BarImage src={require("../assets/bar.png")} alt="bar" />
 
       <div
         style={{
@@ -186,7 +185,7 @@ const Activity = () => {
           left: "23vw",
           width: "51.38vw",
           height: "5.73vh",
-          borderRadius: "10px",
+          borderRadius: "0.69vw",
           backgroundColor: "#FFFFFF",
         }}
       >
@@ -198,7 +197,7 @@ const Activity = () => {
             width: `${correctMatches * 16.66}%`,
             height: "100%",
             backgroundColor: "#FFC700",
-            borderRadius: "10px",
+            borderRadius: "0.69vw",
           }}
         />
       </div>
@@ -209,7 +208,7 @@ const Activity = () => {
           <img
             src={require("../assets/activityarrow.png")}
             alt="activityarrow"
-            style={{ position: "absolute", top: "10.5vh", left: "25vw" }}
+            style={{ position: "absolute", top: "11.5vh", left: "25vw" ,width:'16vw',height:'12.2vh'}}
           />
           <img
             src={require("../assets/askcloud.png")}
@@ -218,7 +217,7 @@ const Activity = () => {
               position: "absolute",
               top: "12.5vh",
               left: "41vw",
-              width: "200px",
+              width: "13.88vw",
             }}
           />
           <p
@@ -226,7 +225,7 @@ const Activity = () => {
               position: "absolute",
               top: "12.5vh",
               left: "42.5vw",
-              fontSize: "24px",
+              fontSize: "1.66vw",
               fontWeight: "700",
               font: "nunito",
               color: "#11AEC6",
@@ -240,7 +239,7 @@ const Activity = () => {
         <img
             src={require("../assets/activityarrow.png")}
             alt="activityarrow"
-            style={{ position: "absolute", bottom: "0.5vh", right: "30vw",transform:'rotate(180deg)' }}
+            style={{ position: "absolute", bottom: "1.5vh", right: "28vw",transform:'rotate(180deg)',width:'16vw',height:'12.2vh' }}
           />
           <img
             src={require("../assets/askcloud.png")}
@@ -250,20 +249,21 @@ const Activity = () => {
               position: "absolute",
               bottom: "12.5vh",
               right: "43.5vw",
-              width: "230px",
+              width: "15.97vw",
+              height:'14.87vh'
             }}
           />
           <p
             style={{
               position: "absolute",
               zIndex:'3',
-              bottom: "17.5vh",
+              top:'73.97vh',
               right: "43.2vw",
-              fontSize: "22px",
+              fontSize: "1.52vw",
               fontWeight: "700",
               font: "nunito",
               color: "#11AEC6",
-              width:'180px',
+              width:'12.5vw',
               margin:'0'
             }}
           >
@@ -304,22 +304,22 @@ const Activity = () => {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            backgroundColor: "rgba(0, 0, 0, 0.8)",
             zIndex: 999,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             color: "white",
-            fontSize: "2rem",
+            fontSize: "32px",
           }}
-        ><div style={{font:'nunito',fontWeight:'600',fontSize:'76px',color:'#FCE492'}}>
-          <div >Its a match !</div>
+        ><div style={{font:'nunito',fontWeight:'600',fontSize:'5.27vw',color:'#FCE492'}}>
+          <div style={{textAlign:'center'}}>Its a match !</div>
           <div>Matched Images: {matchedCards.join(", ")}</div>
           </div>
 
         </div>
       )}
-      <div style={{ position: "absolute", top: 0, right: '20px',font:'nunito',fontWeight:'600',fontSize:'30px',color:'#00224D'}}>
+      <div style={{ position: "absolute", top: 0, right: '1.38vw',font:'nunito',fontWeight:'600',fontSize:'2.08vw',color:'#00224D'}}>
         <p>No of clicks left:{noOfClicks}</p>
       </div>
     </IntroDiv>

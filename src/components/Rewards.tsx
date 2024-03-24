@@ -11,23 +11,24 @@ import { useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
 const RewardsDiv = styled.div`
   position: absolute;
-  width: 462.56px;
-  height: 465.6px;
-  top: 175.93px;
-  border-radius: 45.5px;
+  width: 32.12vw;
+  height: 62.41vh;
+  top: 23.58vh;
+  border-radius: 3.15vw;
   background-color: #fff5d1;
 `;
 const Monkey = styled.img`
-  margin-left: 100px;
-  margin-top: 100px;
-  width: 300px;
-  height: 280px;
+  margin-left: 6.94vw;
+  margin-top: 13.4vh;
+  width: 20.83vw;
+  height: 37.53vh;
 `;
 const Ribbon = styled.img`
-  margin-left: 25px;
-  margin-top: -60px;
-  //   z-index: 5;
+  margin-left: 2.43vw;
+  margin-top: -8.04vh;
   position: absolute;
+  width:28.54vw;
+  height:21.31vh;
 `;
 const YayBtn = styled.button`
   background-color: transparent;
@@ -35,29 +36,33 @@ const YayBtn = styled.button`
   cursor: pointer;
 `;
 const YayImage = styled.img`
-  width: 300px;
-  height: 60px;
-  margin-left: 80px;
+  width: 20.83vw;
+  height: 8.04vh;
+  margin-left: 5.55vw;
 `;
 const Glow = styled.img`
   position: absolute;
   top: 0;
+  width:38.47vw;
+  height:38.2vh;
 `;
 const RibbonSide = styled.img`
   position: absolute;
-  top: -20px;
-  left: 370px;
+  top: -2.68vh;
+  left: 25.99vw;
   z-index: 0;
+  width:8.33vw;
+  height:18.76vh;
 `;
 const RibbonText = styled.div`
   position: absolute;
-  top: -30px;
-  left: 65px;
+  top: -5.02vh;
+  left: 4.21vw;
   font-family: "Nunito", sans-serif;
   color: white;
-  font-size: 36px;
+  font-size: 2.5vw;
   font-weight: 700;
-  line-height: 49.1px;
+  line-height: 3.4vw;
 `;
 const Rewards = () => {
   const { correctMatches, setMatches } = usePageState();
@@ -73,7 +78,7 @@ const Rewards = () => {
           left: "23vw",
           width: "51.38vw",
           height: "5.73vh",
-          borderRadius: "10px",
+          borderRadius: "0.69vw",
           backgroundColor: "#FFFFFF",
           zIndex: 3,
         }}
@@ -86,7 +91,7 @@ const Rewards = () => {
             width: `${correctMatches * 16.66}%`,
             height: "100%",
             backgroundColor: "#FFC700",
-            borderRadius: "10px",
+            borderRadius: "0.69vw",
           }}
         />
       </div>
@@ -114,7 +119,7 @@ const Rewards = () => {
           justifyContent: "center",
           alignItems: "center",
           color: "white",
-          fontSize: "2rem",
+          fontSize: "2.22vw",
         }}
       >
         <Glow src={require("../assets/glow.png")} alt="glow" />
@@ -124,7 +129,7 @@ const Rewards = () => {
           <RibbonSide
             src={require("../assets/ribbonside.png")}
             alt="ribbon"
-            style={{ transform: "rotate(160deg)", left: "-27px" }}
+            style={{ transform: "rotate(160deg)", left: "-1.87vw" }}
           />
           <Ribbon
             src={require("../assets/ribbonmid.png")}
@@ -132,8 +137,8 @@ const Rewards = () => {
           />
           <RibbonText>
             <div>
-              <p style={{ margin: "0 0 0 110px" }}>Earned</p>{" "}
-              <p style={{ margin: 0, fontSize: "70px" }}>
+              <p style={{ margin: "0 0 0 7.63vw" }}>Earned</p>{" "}
+              <p style={{ margin: 0, fontSize: "4.86vw" }}>
                 {correctMatches} Bananas
               </p>
             </div>
@@ -158,11 +163,11 @@ const Rewards = () => {
           alt="banana"
           style={{
             position: "absolute",
-            top: "100px",
-            left: "290px",
-            height: "180px",
-            width: "180px",
-            transform: "rotate(20deg",
+            top: "13.4vh",
+            left: "20.13vw",
+            height: "24.12vh",
+            width: "12.5vw",
+            transform: "rotate(20deg)",
           }}
         />
         <img
@@ -170,10 +175,10 @@ const Rewards = () => {
           alt="banana"
           style={{
             position: "absolute",
-            top: "380px",
-            left: "250px",
-            height: "180px",
-            width: "180px",
+            top: "50.93vh",
+            left: "17.36vw",
+            height: "24.12vh",
+            width: "12.5vw",
             transform: "rotate(90deg",
           }}
         />
@@ -182,11 +187,11 @@ const Rewards = () => {
           alt="banana"
           style={{
             position: "absolute",
-            top: "120px",
-            left: "1150px",
-            height: "180px",
-            width: "180px",
-            transform: "rotate(50deg",
+            top: "16.08vh",
+            left: "79.86vw",
+            height: "24.12vh",
+            width: "12.5vw",
+            transform: "rotate(50deg)",
           }}
         />
         <img
@@ -194,11 +199,11 @@ const Rewards = () => {
           alt="banana"
           style={{
             position: "absolute",
-            top: "280px",
-            left: "1100px",
-            height: "180px",
-            width: "180px",
-            transform: "rotate(130deg",
+            top: "37.53vh",
+            left: "76.38vw",
+            height: "24.12vh",
+            width: "12.5vw",
+            transform: "rotate(130deg)",
           }}
         />
         <img
@@ -206,11 +211,11 @@ const Rewards = () => {
           alt="banana"
           style={{
             position: "absolute",
-            top: "480px",
-            left: "1050px",
-            height: "180px",
-            width: "180px",
-            transform: "rotate(160deg",
+            top: "64.34vh",
+            left: "72.91vw",
+            height: "24.12vh",
+            width: "12.5vw",
+            transform: "rotate(160deg)",
           }}
         />
       </div>
