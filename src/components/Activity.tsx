@@ -39,7 +39,6 @@ const Activity = () => {
   useEffect(() => {
     // Generate initial cards with random symbols
     const symbols = [["🍎",'A'], ["🍌",'B'], ["🍒",'C'], ["🍇",'G'], ["🍊",'O'], ["🍉",'W']];
-    //   const alphas=['A','B','C','G','O','W'];
     const alphas = ['A','B','C','G','O','W'];
     const initialCards = symbols.map(([emoji], index) => ({
         id: index,
@@ -94,8 +93,6 @@ const Activity = () => {
         }
       }
     }
-    // Only allow clicking on unflipped cards and limit to two selected cards
-
     if (cardsSet === "" && cardSet === "cards1") {
       setCardsSet("cards1");
     }
