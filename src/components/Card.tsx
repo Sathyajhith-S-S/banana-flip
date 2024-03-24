@@ -7,14 +7,16 @@ const StyledCard = styled.div<{
   isClickable: boolean;
   isMatched: boolean;
 }>`
-  width: 10.41vw; /* Set a fixed width for the card */
-  height: 25.46vh; /* Set a fixed height for the card */
+  width: 10.41vw;
+  height: 25.46vh; 
   background-color: ${({ isFlipped }) => (isFlipped ? "white" : "transparent")};
   border-radius: 0.69vw;
   cursor: ${({ isClickable }) => (isClickable ? "pointer" : "default")};
   display: flex;
   justify-content: center;
   align-items: center;
+  color:#EF8F35;
+  font-family: "nunito", sans-serif;
   transition: transform 0.3s ease; /* Add a smooth transition for flipping */
   margin-right: 3.47vw; /* Add margin to the right */
   margin-bottom: 6.7vh; /* Add margin to the bottom */

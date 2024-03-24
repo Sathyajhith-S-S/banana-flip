@@ -7,6 +7,8 @@ import playBtn from "../assets/playbtn.png";
 import Instruction from "./Instruction";
 import { useNavigate } from "react-router-dom";
 import { usePageState } from './PageContext';
+import useSound from 'use-sound';
+// import buttonClick from "../assets/click.mp3";
 export const IntroDiv = styled.div`
   height: 100vh;
   width: 100vw;
@@ -127,13 +129,16 @@ const Dust4 = styled.img`
 const Intro = () => {
   const { currentPage, increasePage,decreasePage } = usePageState();
   const nextBtns = [startBtn, nextBtn, yesBtn, playBtn];
+  // const [play]=useSound(buttonClick);
   const intros = [
     "Welcome Kiddo !",
-    "Hi , I am Mizo ! and I love bananas ",
-    "Can you help me get some ? ",
+    "Hi , I am Mizo ! and I love bananas 🍌 ",
+    "Can you help me get some ? 😁 ",
   ];
   const navigate=useNavigate();
+  
   const handleNext = () => {
+  //  play();
     if (currentPage === 3) {
       navigate("/activity"); // Navigate to "/activity" route
     } else {

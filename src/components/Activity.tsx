@@ -35,20 +35,19 @@ const Activity = () => {
   const { correctMatches, increaseMatches, setMatches } = usePageState(); // Track correct matches for progress
   const [noOfClicks, setNoOfClicks] = useState(20);
   const [cardsSet, setCardsSet] = useState("");
+  const symbols = [["🍎",'A'], ["🍌",'B'], ["🍒",'C'], ["🍇",'G'], ["🍊",'O'], ["🍉",'W']];
   useEffect(() => {
     // Generate initial cards with random symbols
-    const symbols = ["🍎", "🍌", "🍒", "🍇", "🍊", "🍉"];
+    const symbols = [["🍎",'A'], ["🍌",'B'], ["🍒",'C'], ["🍇",'G'], ["🍊",'O'], ["🍉",'W']];
     //   const alphas=['A','B','C','G','O','W'];
-    const alphas = ["🍎", "🍌", "🍒", "🍇", "🍊", "🍉"];
-    const initialCards = symbols
-      // Create pairs of symbols
-      .map((symbol, index) => ({
+    const alphas = ['A','B','C','G','O','W'];
+    const initialCards = symbols.map(([emoji], index) => ({
         id: index,
-        symbol,
+        symbol: emoji,
         isFlipped: true,
         isMatched: false,
       }));
-    setCards1(shuffleArray(initialCards));
+      setCards1(shuffleArray(initialCards));
     const alphaCards = alphas.map((symbol, index) => ({
       id: index,
       symbol,
@@ -123,8 +122,9 @@ const Activity = () => {
 
       const card1 = cards1[index1];
       const card2 = cards2[index2];
-
-      if (card1.symbol === card2.symbol) {
+      console.log(card1," ",card2.symbol)
+      const index = symbols.findIndex(([emoji]) => emoji === card1.symbol);
+      if (symbols[index][1] === card2.symbol) {
         // Matching cards
         const updatedCards1 = [...cards1];
         const updatedCards2 = [...cards2];
@@ -313,7 +313,7 @@ const Activity = () => {
             fontSize: "32px",
           }}
         ><div style={{font:'nunito',fontWeight:'600',fontSize:'5.27vw',color:'#FCE492'}}>
-          <div style={{textAlign:'center'}}>Its a match !</div>
+          <div style={{textAlign:'center'}}>Its a match ! 😉</div>
           <div>Matched Images: {matchedCards.join(", ")}</div>
           </div>
 
