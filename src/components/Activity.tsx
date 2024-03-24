@@ -5,7 +5,7 @@ import {
   PrevBtn,
   PrevBtnImage,
   BarBanana,
-  BarImage,
+ Askcloud
 } from "./Intro";
 import { useNavigate } from "react-router-dom";
 import Card from "./Card";
@@ -319,8 +319,9 @@ const Activity = () => {
 
         </div>
       )}
-      <div style={{ position: "absolute", top: 0, right: '1.38vw',font:'nunito',fontWeight:'600',fontSize:'2.08vw',color:'#00224D'}}>
-        <p>No of clicks left:{noOfClicks}</p>
+      <Askcloud src={require("../assets/askcloud.png")} alt="askcloud" style={{left:'78vw',top:'-1.34vh',width:'23vw',height:'26.8vh'}}/>
+      <div style={{ position: "absolute", top: '1.5vh', right: '1.38vw'}}>
+        <p style={{font:'nunito',fontWeight:'700',fontSize:'2.08vw',color:'#11AEC6'}}>No of clicks left:{noOfClicks}</p>
       </div>
     </IntroDiv>
   );

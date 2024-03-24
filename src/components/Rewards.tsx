@@ -34,6 +34,10 @@ const YayBtn = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+  transition: transform 0.2s ease; /* Add transition for transform property */
+  &:hover {
+    transform: scale(1.1); /* Scale up on hover */
+  }
 `;
 const YayImage = styled.img`
   width: 20.83vw;

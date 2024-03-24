@@ -37,7 +37,7 @@ const Shadow = styled.img`
   width: 40.72vw;
 `;
 
-const Askcloud = styled.img`
+export const Askcloud = styled.img`
   position: absolute;
   left: 51.69vw;
   top: 12.72vh;
@@ -66,6 +66,10 @@ const NextBtn = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+  transition: transform 0.2s ease; 
+  &:hover {
+    transform: scale(1.1); /* Scale up on hover */
+  }
 `;
 
 const NextBtnImage = styled.img`
@@ -79,6 +83,10 @@ export const PrevBtn = styled.button`
   position: absolute;
   left: 2.84vw;
   top: 4.58vh;
+  transition: transform 0.2s ease; /* Add transition for transform property */
+  &:hover {
+    transform: scale(1.1); /* Scale up on hover */
+  }
 `;
 export const PrevBtnImage = styled.img`
   width: 9.83vw;
